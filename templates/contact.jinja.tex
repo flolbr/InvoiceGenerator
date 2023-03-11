@@ -1,0 +1,18 @@
+<+ macro block(contact) -+>
+\begin{tblr}{
+    colspec = { r l }
+}
+    <+ if contact.is_client +>
+        \textbf{<@ document.type @> à} & \\
+    <+ else +>
+        \, & \\
+    <+ endif +>
+    <+ for k, field in contact.fields.items() +>
+        <+ if field.value +>
+            <@ field.title @> & <@ field.value @> \\
+        <+ else +>
+            \, & \\
+        <+ endif +>
+    <+ endfor +>
+\end{tblr}
+<+- endmacro +>
