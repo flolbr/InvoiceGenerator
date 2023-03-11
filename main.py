@@ -2,7 +2,6 @@ import argparse
 import os
 import shutil
 import subprocess
-import sys
 from datetime import datetime
 from pathlib import Path
 
@@ -220,23 +219,5 @@ def app():
     return
 
 
-# def app2():
-#     parser = argparse.ArgumentParser()
-#     parser.add_argument("input_file", type=Path, help="File to use as input for the generated invoice.")
-#     parser.add_argument("-n", "--number", type=str, help="File number")
-#     parser.add_argument("-o", "--output", type=Path, help="Output file")
-#     args = parser.parse_args()
-#
-#     input_file = args.input_file
-#     output = args.output
-#     print(input_file)
-#
-#     path = input_file.resolve().absolute().parent
-#     output_file = output if output.is_absolute() else path / (output or 'test.tex')
-#
-#     return
-
-
 if __name__ == '__main__':
     app()
-    # app2()
