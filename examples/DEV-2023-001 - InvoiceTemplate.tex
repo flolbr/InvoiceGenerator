@@ -1,0 +1,152 @@
+%% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+
+%%%%%%%%%%%%%%%%%
+% Jinja imports %
+%%%%%%%%%%%%%%%%%
+
+
+
+
+\documentclass[10pt,a4paper]{article}
+
+%%%%%%%%%%%%
+% Packages %
+%%%%%%%%%%%%
+
+\usepackage{fontspec}
+\setmainfont{Arial}
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+%\setmainfont{???}
+\usepackage{polyglossia}
+\setdefaultlanguage{french}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[table]{xcolor}
+\usepackage[left=1.27cm,right=1.27cm,top=1.27cm,bottom=1.27cm]{geometry}
+\usepackage{tabularray}
+
+%%%%%%%%%%%%%
+% Variables %
+%%%%%%%%%%%%%
+
+\definecolor{AccentColor}{HTML}{3897d4}
+
+
+%%%%%%%%%%%%
+% Document %
+%%%%%%%%%%%%
+
+\begin{document}
+
+    \begin{flushright} % \large
+
+        \begin{tblr}{
+            colspec      = { c c },
+            rows         = {bg = gray!10},
+            row{odd}     = {bg = gray!10},
+            row{1}       = {fg = white, bg = AccentColor},
+            hline{1,2,Z} = {0.5pt},
+            vline{1,Z}   = {0.5pt},
+            stretch      = 1.5
+        }
+            \SetCell[c=2]{c} \textbf{INVOICE} &              \\
+            Invoice n°                        & DEV-2023-001 \\
+            Date                              & 01/01/2023   \\
+        \end{tblr}
+
+    \end{flushright}
+
+
+    ~\\ % new line to avoid alinea
+    \begin{minipage}{0.5\textwidth}
+        \begin{flushleft} % \large
+
+            \begin{tblr}{
+                colspec = { r l }
+            }
+                \,        &                  \\
+                Nom       & Own Name         \\
+                Adresse   & Street Address   \\
+                & City             \\
+                Téléphone & 0123456789       \\
+                Email     & client@email.com \\
+                SIREN     & 0123456789       \\
+            \end{tblr}
+
+        \end{flushleft}
+    \end{minipage}
+    % ~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} % \large
+
+            \begin{tblr}{
+                colspec = { r l }
+            }
+                \textbf{Invoice à} &                  \\
+                Nom                & ClientName       \\
+                Adresse            & Street Address   \\
+                & City             \\
+                Téléphone          & 0123456789       \\
+                Email              & client@email.com \\
+                SIREN              & 0123456789       \\
+            \end{tblr}
+
+        \end{flushright}
+    \end{minipage}\\ [1cm]
+
+
+    ~\\ % new line to avoid alinea
+    \begin{tblr}{
+        colspec      = { X[l,6] X[c] X[c] X[c] },
+        row{odd}     = {bg = gray!10},
+        row{1}       = {fg = white, bg = AccentColor},
+        hline{1,2,Z} = {0.5pt},
+        vline{1,Z}   = {0.5pt},
+        stretch      = 1.5
+    }
+        \textbf{Désignation} & \textbf{PU TTC} & \textbf{Qté} & \textbf{Total TTC} \\
+        Product A            & 250,00\,€       & 0.5          & 125,00\,€          \\
+        Product B            & 300,00\,€       & 2            & 600,00\,€          \\
+        Product C            & 125,00\,€       & 0.5          & 62,50\,€           \\
+
+    \end{tblr}
+
+%    \,\\ % new line to avoid alinea
+    \begin{flushright}
+
+        \large{TOTAL TTC: 787,50\,€} \\
+        \textcolor{gray!80}{\small{\em{TVA non applicable, art. 293B du CGI}}}  \\
+
+    \end{flushright}
+
+    \,\\ % new line to avoid alinea
+    \begin{tblr}{
+        colspec      = { l r },
+%        row{odd}     = {bg = gray!10},
+%        row{1}       = {fg = white, bg = AccentColor},
+%        hline{1,2,Z} = {0.5pt},
+%        vline{1,Z}   = {0.5pt},
+        stretch      = 1.25
+    }
+        Début des prestations:     & 02/01/2023 \\
+        Livraison des prestations: & 03/01/2023 \\
+    \end{tblr}
+
+    \vspace*{\fill}
+
+    \paragraph{}
+    \emph{
+        Le paiement doit s’effectuer à la livraison de la prestation par chèque ou virement bancaire. \\
+    }
+
+    \paragraph{}
+    \emph{
+%        Le paiement doit s’effectuer à la livraison de la prestation par chèque ou virement bancaire. \\
+        Il est convenu que le vendeur reste propriétaire des marchandises, matérielles et immatérielles, vendues tant que l’acquéreur ne lui a pas entièrement réglé le prix prévu dans le présent contrat.
+        Il en résulte qu’en cas de non-paiement, le vendeur pourra exiger à tout moment la restitution desdites marchandises.
+    }
+\end{document}
