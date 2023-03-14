@@ -9,7 +9,7 @@ from openpyxl import load_workbook
 from openpyxl.workbook import Workbook
 
 from contact import Client, Me
-from document import Document
+from document import Invoice
 from table import Nomenclature
 
 os.system('')  # Needed to enable VT100 support
@@ -56,16 +56,18 @@ def app():
     data_wb = load_workbook(filename=input_file, data_only=True)
 
     # Extract the data from the Excel file
-    client = Client(data_wb['Client'])
-    me = Me(data_wb['Self'])
 
-    nom = Nomenclature(data_wb['Nomenclature'])
+    document = Invoice(data_wb['Info'])
 
-    document = Document(data_wb['Info'])
+    document.data = {
+        'client': Client(data_wb['Client']),
+        'me': Me(data_wb['Self']),
+        'nomenclature': Nomenclature(data_wb['Nomenclature']),
+    }
 
     # Render the template
-    template = env.get_template('invoice.jinja.tex')
-    rendered = template.render(client=client, me=me, document=document, nomenclature=nom)
+    template = env.get_template(document.template)
+    rendered = template.render(document=document)
     # print(rendered)
 
     # Output the generated document

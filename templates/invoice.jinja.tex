@@ -6,9 +6,16 @@
 %%%%%%%%%%%%%%%%%
 
 <+ import "contact.jinja.tex" as contact with context +>
+
 <+ set info = document.info +>
 
+<+ set client = document.data.client +>
+<+ set me = document.data.me +>
+<+ set nomenclature = document.data.nomenclature +>
 
+%%%%%%%%%%%%%%%%%%
+% Document Class %
+%%%%%%%%%%%%%%%%%%
 
 \documentclass[10pt,a4paper]{article}
 
@@ -43,25 +50,34 @@
 %%%%%%%%%%%%
 
 \begin{document}
+    ~\\ % new line to avoid alinea
+    \begin{minipage}{0.6\textwidth}
+        \begin{flushleft} \large
 
-    \begin{flushright} % \large
+            <@ info.title @>
 
-        \begin{tblr}{
-            colspec      = { c c },
-            rows         = {bg = gray!10},
-            row{odd}     = {bg = gray!10},
-            row{1}       = {fg = white, bg = AccentColor},
-            hline{1,2,Z} = {0.5pt},
-            vline{1,Z}   = {0.5pt},
-            stretch      = 1.5
-        }
-            \SetCell[c=2]{c} \textbf{<@ document.type | upper @>} &                       \\
-            <@ document.type @> n°                                & <@ document.number @> \\
-            Date                                                  & <@ document.date @>   \\
-        \end{tblr}
+        \end{flushleft}
+    \end{minipage}
+    % ~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} % \large
 
-    \end{flushright}
+            \begin{tblr}{
+                colspec      = { c c },
+                rows         = {bg = gray!10},
+                row{odd}     = {bg = gray!10},
+                row{1}       = {fg = white, bg = AccentColor},
+                hline{1,2,Z} = {0.5pt},
+                vline{1,Z}   = {0.5pt},
+                stretch      = 1.5
+            }
+                \SetCell[c=2]{c} \textbf{<@ document.type | upper @>} &                       \\
+                <@ document.type @> n°                                & <@ document.number @> \\
+                Date                                                  & <@ document.date @>   \\
+            \end{tblr}
 
+        \end{flushright}
+    \end{minipage}\\ [1cm]
 
     ~\\ % new line to avoid alinea
     \begin{minipage}{0.5\textwidth}

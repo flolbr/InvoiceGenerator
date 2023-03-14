@@ -6,7 +6,9 @@
 %%%%%%%%%%%%%%%%%
 
 
-
+%%%%%%%%%%%%%%%%%%
+% Document Class %
+%%%%%%%%%%%%%%%%%%
 
 \documentclass[10pt,a4paper]{article}
 
@@ -41,25 +43,35 @@
 %%%%%%%%%%%%
 
 \begin{document}
+    ~\\ % new line to avoid alinea
+    \begin{minipage}{0.6\textwidth}
+        \begin{flushleft}
+            \large
 
-    \begin{flushright} % \large
+            Document Title
 
-        \begin{tblr}{
-            colspec      = { c c },
-            rows         = {bg = gray!10},
-            row{odd}     = {bg = gray!10},
-            row{1}       = {fg = white, bg = AccentColor},
-            hline{1,2,Z} = {0.5pt},
-            vline{1,Z}   = {0.5pt},
-            stretch      = 1.5
-        }
-            \SetCell[c=2]{c} \textbf{INVOICE} &              \\
-            Invoice n°                        & DEV-2023-001 \\
-            Date                              & 01/01/2023   \\
-        \end{tblr}
+        \end{flushleft}
+    \end{minipage}
+    % ~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} % \large
 
-    \end{flushright}
+            \begin{tblr}{
+                colspec      = { c c },
+                rows         = {bg = gray!10},
+                row{odd}     = {bg = gray!10},
+                row{1}       = {fg = white, bg = AccentColor},
+                hline{1,2,Z} = {0.5pt},
+                vline{1,Z}   = {0.5pt},
+                stretch      = 1.5
+            }
+                \SetCell[c=2]{c} \textbf{INVOICE} &              \\
+                Invoice n°                        & DEV-2023-001 \\
+                Date                              & 01/01/2023   \\
+            \end{tblr}
 
+        \end{flushright}
+    \end{minipage}\\ [1cm]
 
     ~\\ % new line to avoid alinea
     \begin{minipage}{0.5\textwidth}
