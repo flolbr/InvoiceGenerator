@@ -11,7 +11,9 @@ def format_cell(cell: Cell) -> any:
     :param cell: Input cell
     :return: Formatted cell value
     """
-    if cell.style == 'Monétaire' or cell.style == 'Currency':
+    if cell.value is None:
+        return ''
+    elif cell.style == 'Monétaire' or cell.style == 'Currency':
         return f'{cell.value :.02f}\\,€'.replace('.', ',')
     elif cell.is_date:
         return cell.value.strftime('%d/%m/%Y')
