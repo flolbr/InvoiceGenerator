@@ -96,6 +96,8 @@ def app():
             f'"{output_file.name}"',
         ])
 
+        print(command)
+
         # Command call
         xelatex = subprocess.run(
             command,
